@@ -17,7 +17,6 @@ cuerpo_peticion = ''
 
 conn.request('GET',uri,headers = headers,body=cuerpo_peticion)
 response=conn.getresponse()
-print 'STATUS:  ' + str(response.status) + '   ' + str(response.reason)
 
 f = open('datos.txt','w')
 f.write(response.read())
@@ -34,7 +33,9 @@ conexion.connect()
 uri = '/channels/224662/feeds'
 parametro = {'api_key': '7ZEVD4MVX39VS4X6',}
 parametro_encoded = urllib.urlencode(parametro)
-cabeceras = {'Host': servidor,}
+cabeceras = {'Host': servidor,
+             'Content-Type': 'application/x-www-form-urlencoded',
+             }
 
 conexion.request('DELETE',uri,headers = cabeceras,body=parametro_encoded)
 respuesta=conexion.getresponse()
