@@ -1,8 +1,11 @@
 import httplib
 import urllib
+import gzip
 
 us = 'user'
 pw = 'pass'
+
+#TODO descargar comprimido con gzip
 
 # Realizamos una primera conexion a eGela
 servidor = 'egela.ehu.es'
@@ -21,8 +24,6 @@ print '\nPrimera conexion:'
 print ' STATUS:  ' + str(respuesta.status) + '   ' + str(respuesta.reason)
 
 location = respuesta.getheader('location')
-print "  Location: " + location
-
 array = location.split('/')
 
 conn.close()
